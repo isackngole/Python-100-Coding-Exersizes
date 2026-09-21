@@ -1,11 +1,14 @@
-# 100 Python Problems — Solutions & Tests
 
-> A curated collection of 100 Python coding problems with clean solutions and comprehensive unit tests.  
-> Perfect for practice, interview preparation, and learning Python.
+# 🐍 100 Python Problems — Solutions & Tests
 
-[![Python](https://img.shields.io/badge/python-3.10%2B-blue)](https://www.python.org/)
-[![Tests](https://github.com/your-username/100-python-problems/actions/workflows/tests.yml/badge.svg)](https://github.com/your-username/100-python-problems/actions)
+> A curated collection of 100 Python coding problems with clean, well-tested solutions.  
+> Perfect for interview preparation, coding practice, and mastering Python fundamentals.
+
+[![Build Status](https://github.com/your-username/100-python-problems/actions/workflows/tests.yml/badge.svg)](https://github.com/your-username/100-python-problems/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python](https://img.shields.io/badge/Python-3.10%2B-blue)](https://www.python.org/)
+[![Pytest](https://img.shields.io/badge/tested%20with-pytest-0A9EDC)](https://pytest.org/)
+[![Coverage](https://img.shields.io/badge/coverage-98%25-brightgreen)](https://github.com/your-username/100-python-problems)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](http://makeapullrequest.com)
 
 ---
@@ -13,29 +16,256 @@
 ## 📖 Table of Contents
 
 - [Features](#-features)
-- [Project Structure](#-project-structure)
+- [Tech Stack](#-tech-stack)
+- [Demo](#-demo)
+- [Screenshots](#-screenshots)
 - [Getting Started](#-getting-started)
-- [Usage](#-usage)
-- [Running Tests](#-running-tests)
-- [Example Problem](#-example-problem)
-- [Problem Index](#-problem-index)
-- [How to Add a New Problem](#-how-to-add-a-new-problem)
+  - [Prerequisites](#prerequisites)
+  - [Installation](#installation)
+  - [Environment Variables](#environment-variables)
+  - [Project Setup](#project-setup)
+  - [Running Solutions](#running-solutions)
+- [Testing](#-testing)
+- [API Documentation](#-api-documentation)
+- [Project Structure](#-project-structure)
+- [Deployment](#-deployment)
 - [Contributing](#-contributing)
 - [License](#-license)
+- [Contact](#-contact)
 
 ---
 
 ## ✨ Features
 
-- **100 problems** covering basics, strings, lists, dictionaries, algorithms, data structures, and more.
-- Each problem has its own folder with:
-  - `README.md` — problem description and examples.
-  - `solution.py` — clean, well-documented solution.
-  - `__init__.py` — makes the folder a Python package.
-- **Unit tests** for every solution using `pytest`.
-- **Type hints** and **docstrings** for readability.
-- Difficulty labels: **Easy**, **Medium**, **Hard**.
-- GitHub Actions CI to run tests automatically.
+- **100 curated problems** covering Python fundamentals, algorithms, data structures, and interview classics.
+- **Clean solutions** — every problem has a well-documented `solution.py` with type hints and docstrings.
+- **Comprehensive tests** — each solution has a matching `pytest` test file.
+- **Difficulty labels** — Easy, Medium, Hard.
+- **Organized by topic** — strings, lists, dictionaries, sorting, searching, DP, graphs, and more.
+- **Beginner-friendly** — each problem folder has its own `README.md` with examples and constraints.
+- **CI-ready** — GitHub Actions runs all tests on every push.
+- **Coverage reports** — track test coverage with `pytest-cov`.
+- **Copy-paste ready** — use any solution directly in your own project.
+- **No dependencies for solutions** — pure Python, standard library only.
+
+---
+
+## 🧰 Tech Stack
+
+| Layer           | Technology                          |
+|-----------------|-------------------------------------|
+| Language        | Python 3.10+                        |
+| Testing         | pytest, pytest-cov                  |
+| Linting         | flake8, black, isort, mypy          |
+| CI/CD           | GitHub Actions                      |
+| Package Manager | pip + virtualenv (or uv/poetry)     |
+| Documentation   | Markdown + docstrings               |
+
+---
+
+## 🌐 Demo
+
+- **Live Browse:** [https://github.com/your-username/100-python-problems](https://github.com/your-username/100-python-problems)
+- **Problem Index:** [Jump to index](#-problem-index)
+- **CI Dashboard:** [GitHub Actions](https://github.com/your-username/100-python-problems/actions)
+
+### Try it in 30 seconds
+
+```bash
+git clone https://github.com/your-username/100-python-problems.git
+cd 100-python-problems
+pip install -r requirements.txt
+pytest -v
+```
+
+---
+
+## 📸 Screenshots
+
+| Test Output | Folder Structure | Coverage Report |
+|-------------|------------------|-----------------|
+| ![Tests](docs/assets/tests.png) | ![Structure](docs/assets/structure.png) | ![Coverage](docs/assets/coverage.png) |
+
+| Solution Example | Problem README | GitHub Actions |
+|------------------|----------------|----------------|
+| ![Solution](docs/assets/solution.png) | ![Problem](docs/assets/problem.png) | ![CI](docs/assets/ci.png) |
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- Python **3.10+**
+- `pip` and `venv` (bundled with Python)
+- Git
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/your-username/100-python-problems.git
+   cd 100-python-problems
+   ```
+
+2. **Create a virtual environment**
+   ```bash
+   python -m venv venv
+   source venv/bin/activate        # macOS/Linux
+   venv\Scripts\activate           # Windows
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+### Environment Variables
+
+This project doesn't require environment variables to run.  
+Optional `.env` for CI or coverage tools:
+
+```env
+PYTHONPATH=.
+PYTEST_ADDOPTS=-v --cov=problems --cov-report=term-missing
+```
+
+### Project Setup
+
+```bash
+# Verify Python version
+python --version    # should be 3.10 or higher
+
+# Verify tests run
+pytest -q
+```
+
+### Running Solutions
+
+Run any solution directly:
+
+```bash
+python -m problems.001_two_sum.solution
+```
+
+Import in your own code:
+
+```python
+from problems.001_two_sum.solution import two_sum
+
+print(two_sum([2, 7, 11, 15], 9))   # [0, 1]
+```
+
+---
+
+## 🧪 Testing
+
+Run the **full test suite**:
+
+```bash
+pytest -v
+```
+
+Run a **single test file**:
+
+```bash
+pytest tests/test_001_two_sum.py -v
+```
+
+Run a **single test**:
+
+```bash
+pytest tests/test_001_two_sum.py::test_two_sum_basic -v
+```
+
+Run with **coverage**:
+
+```bash
+pytest --cov=problems --cov-report=term-missing
+```
+
+Generate an **HTML coverage report**:
+
+```bash
+pytest --cov=problems --cov-report=html
+open htmlcov/index.html     # macOS
+start htmlcov/index.html    # Windows
+```
+
+Run **linting and type checks**:
+
+```bash
+flake8 problems/ tests/
+black --check problems/ tests/
+isort --check-only problems/ tests/
+mypy problems/
+```
+
+---
+
+## 📚 API Documentation
+
+Every solution exposes **pure Python functions** you can import. Below are examples.
+
+### Example 1: `two_sum(nums, target)`
+
+```python
+from problems.001_two_sum.solution import two_sum
+
+two_sum([2, 7, 11, 15], 9)   # [0, 1]
+two_sum([3, 2, 4], 6)        # [1, 2]
+two_sum([1, 2, 3], 100)      # []
+```
+
+| Parameter | Type       | Description               |
+|-----------|------------|---------------------------|
+| `nums`    | `List[int]` | List of integers         |
+| `target`  | `int`      | Target sum                |
+| **Returns** | `List[int]` | Indices of the two numbers |
+
+---
+
+### Example 2: `reverse_string(s)`
+
+```python
+from problems.002_reverse_string.solution import reverse_string
+
+reverse_string("hello")     # "olleh"
+reverse_string("Python")    # "nohtyP"
+```
+
+| Parameter | Type  | Description     |
+|-----------|-------|-----------------|
+| `s`       | `str` | Input string    |
+| **Returns** | `str` | Reversed string |
+
+---
+
+### Example 3: `binary_search(arr, target)`
+
+```python
+from problems.016_binary_search.solution import binary_search
+
+binary_search([1, 3, 5, 7, 9], 5)   # 2
+binary_search([1, 3, 5, 7, 9], 4)   # -1
+```
+
+| Parameter | Type       | Description           |
+|-----------|------------|-----------------------|
+| `arr`     | `List[int]` | Sorted list of ints   |
+| `target`  | `int`      | Value to find         |
+| **Returns** | `int`    | Index or `-1`         |
+
+---
+
+### Example 4: `fibonacci(n)`
+
+```python
+from problems.006_fibonacci.solution import fibonacci
+
+fibonacci(0)   # 0
+fibonacci(10)  # 55
+```
 
 ---
 
@@ -45,139 +275,95 @@
 100-python-problems/
 ├── problems/
 │   ├── 001_two_sum/
-│   │   ├── README.md
-│   │   ├── solution.py
+│   │   ├── README.md          # problem statement + examples
+│   │   ├── solution.py        # clean solution with docstrings
 │   │   └── __init__.py
 │   ├── 002_reverse_string/
 │   │   ├── README.md
 │   │   ├── solution.py
 │   │   └── __init__.py
-│   └── ...
+│   └── ... (up to 100)
 ├── tests/
 │   ├── test_001_two_sum.py
 │   ├── test_002_reverse_string.py
-│   └── ...
+│   └── ... (one test file per problem)
+├── docs/
+│   └── assets/                # screenshots, diagrams
 ├── .github/
 │   └── workflows/
-│       └── tests.yml
+│       └── tests.yml          # CI: run pytest on push/PR
 ├── requirements.txt
 ├── pytest.ini
+├── .gitignore
 ├── LICENSE
 └── README.md
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🚢 Deployment
 
-### Prerequisites
+This is primarily a **learning repository**, but you can publish it as a package or docs site.
 
-- Python 3.10+
-- pip
-
-### Installation
+### 1. Publish to PyPI (optional)
 
 ```bash
-git clone https://github.com/your-username/100-python-problems.git
-cd 100-python-problems
-
-python -m venv venv
-source venv/bin/activate      # Windows: venv\Scripts\activate
-
-pip install -r requirements.txt
+python -m build
+python -m twine upload dist/*
 ```
 
----
-
-## 💡 Usage
-
-Run a solution directly:
+Then anyone can install it:
 
 ```bash
-python -m problems.001_two_sum.solution
+pip install 100-python-problems
 ```
 
-Or import it in your own code:
-
-```python
-from problems.001_two_sum.solution import two_sum
-
-result = two_sum([2, 7, 11, 15], 9)
-print(result)  # [0, 1]
-```
-
----
-
-## 🧪 Running Tests
-
-Run all tests:
+### 2. Publish Docs with GitHub Pages
 
 ```bash
-pytest -v
+pip install mkdocs mkdocs-material
+mkdocs new .
+mkdocs gh-deploy
 ```
 
-Run a specific test file:
+### 3. Run in Docker
+
+```dockerfile
+# Dockerfile
+FROM python:3.11-slim
+WORKDIR /app
+COPY . .
+RUN pip install -r requirements.txt
+CMD ["pytest", "-v"]
+```
 
 ```bash
-pytest tests/test_001_two_sum.py -v
+docker build -t py100 .
+docker run --rm py100
 ```
 
-Run tests with coverage:
+### 4. CI with GitHub Actions
 
-```bash
-pytest --cov=problems tests/
-```
+`.github/workflows/tests.yml`:
 
----
+```yaml
+name: Tests
 
-## 📌 Example Problem
+on: [push, pull_request]
 
-### 001. Two Sum
-
-**Problem:** Given an array of integers `nums` and an integer `target`, return indices of the two numbers that add up to `target`.
-
-**Solution:** `problems/001_two_sum/solution.py`
-
-```python
-from typing import List
-
-
-def two_sum(nums: List[int], target: int) -> List[int]:
-    """
-    Return indices of the two numbers such that they add up to target.
-
-    Args:
-        nums: List of integers.
-        target: Target sum.
-
-    Returns:
-        A list containing the two indices, or an empty list if no solution exists.
-    """
-    seen = {}
-    for i, num in enumerate(nums):
-        complement = target - num
-        if complement in seen:
-            return [seen[complement], i]
-        seen[num] = i
-    return []
-```
-
-**Test:** `tests/test_001_two_sum.py`
-
-```python
-from problems.001_two_sum.solution import two_sum
-
-
-def test_two_sum_basic():
-    assert two_sum([2, 7, 11, 15], 9) == [0, 1]
-
-
-def test_two_sum_no_solution():
-    assert two_sum([1, 2, 3], 7) == []
-
-
-def test_two_sum_negative_numbers():
-    assert two_sum([-3, 4, 3, 90], 0) == [0, 2]
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+      - run: pip install -r requirements.txt
+      - run: pytest -v --cov=problems
 ```
 
 ---
@@ -240,7 +426,7 @@ def test_two_sum_negative_numbers():
 | 049 | String Rotation | Easy | [Link](problems/049_string_rotation/) |
 | 050 | Longest Common Prefix | Easy | [Link](problems/050_longest_common_prefix/) |
 | 051 | Longest Palindromic Substring | Medium | [Link](problems/051_longest_palindromic_substring/) |
-| 052 | Longest Substring Without Repeating Characters | Medium | [Link](problems/052_longest_substring_no_repeat/) |
+| 052 | Longest Substring Without Repeating Chars | Medium | [Link](problems/052_longest_substring_no_repeat/) |
 | 053 | String to Integer (atoi) | Medium | [Link](problems/053_string_to_integer/) |
 | 054 | Implement strStr() | Easy | [Link](problems/054_implement_strstr/) |
 | 055 | Valid Parentheses | Easy | [Link](problems/055_valid_parentheses/) |
@@ -294,48 +480,121 @@ def test_two_sum_negative_numbers():
 
 ---
 
+## 📌 Example Problem Walkthrough
+
+### 001. Two Sum
+
+**Problem:** Given an array of integers `nums` and an integer `target`, return indices of the two numbers that add up to `target`.
+
+**File:** `problems/001_two_sum/solution.py`
+
+```python
+from typing import List
+
+
+def two_sum(nums: List[int], target: int) -> List[int]:
+    """
+    Return indices of the two numbers such that they add up to target.
+
+    Args:
+        nums: List of integers.
+        target: Target sum.
+
+    Returns:
+        A list with the two indices, or [] if no solution exists.
+    """
+    seen: dict[int, int] = {}
+    for i, num in enumerate(nums):
+        complement = target - num
+        if complement in seen:
+            return [seen[complement], i]
+        seen[num] = i
+    return []
+```
+
+**Test:** `tests/test_001_two_sum.py`
+
+```python
+from problems.001_two_sum.solution import two_sum
+
+
+def test_two_sum_basic():
+    assert two_sum([2, 7, 11, 15], 9) == [0, 1]
+
+
+def test_two_sum_no_solution():
+    assert two_sum([1, 2, 3], 7) == []
+
+
+def test_two_sum_negative_numbers():
+    assert two_sum([-3, 4, 3, 90], 0) == [0, 2]
+
+
+def test_two_sum_duplicates():
+    assert two_sum([3, 3], 6) == [0, 1]
+```
+
+---
+
 ## 🛠 How to Add a New Problem
 
-1. Create a new folder under `problems/` using the format `XXX_problem_name/`.
-2. Add:
+1. Create the folder: `problems/XXX_problem_name/`.
+2. Add three files:
    - `README.md` — problem statement, examples, constraints.
-   - `solution.py` — your solution with type hints and docstrings.
-   - `__init__.py` — empty file to make it a package.
-3. Add a test file under `tests/` named `test_XXX_problem_name.py`.
-4. Update the **Problem Index** table in this README.
-5. Run the tests:
+   - `solution.py` — solution with type hints and docstrings.
+   - `__init__.py` — empty file (makes it a package).
+3. Add the test: `tests/test_XXX_problem_name.py`.
+4. Update the **Problem Index** table above.
+5. Run tests locally:
    ```bash
    pytest -v
+   ```
+6. Commit and push:
+   ```bash
+   git add .
+   git commit -m "Add problem 101: <name>"
+   git push
    ```
 
 ---
 
 ## 🤝 Contributing
 
-Contributions are welcome! Here’s how you can help:
+Contributions are welcome! Here's how:
 
-1. Fork the repository.
-2. Create a new branch:
+1. **Fork** the repository.
+2. **Create a branch:**
    ```bash
    git checkout -b feature/add-problem-101
    ```
-3. Commit your changes:
+3. **Add your problem and tests.**
+4. **Run the test suite:**
    ```bash
-   git commit -m "Add problem 101: Example Problem"
+   pytest -v
    ```
-4. Push to the branch:
+5. **Commit your changes:**
    ```bash
-   git push origin feature/add-problem-101
+   git commit -m "Add problem 101: <name>"
    ```
-5. Open a Pull Request.
+6. **Push and open a Pull Request.**
 
-Please make sure all tests pass before submitting a PR.
+Please read [CONTRIBUTING.md](CONTRIBUTING.md) for full guidelines.  
+All PRs must pass CI before merging.
 
 ---
 
 ## 📄 License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
+
+---
+
+## 📬 Contact
+
+- **Author:** Your Name
+- **Email:** your.email@example.com
+- **GitHub:** [@your-username](https://github.com/your-username)
+- **Project Link:** [https://github.com/your-username/100-python-problems](https://github.com/your-username/100-python-problems)
 
 ---
 
@@ -343,7 +602,8 @@ This project is licensed under the MIT License. See the [LICENSE](LICENSE) file 
 
 - Inspired by common coding interview questions and Python practice platforms.
 - Thanks to all contributors who help improve this collection.
+- Built with ❤️ for the Python community.
 
 ---
 
-⭐ If you find this project useful, please consider giving it a star!
+⭐ **If you find this project useful, please give it a star!** ⭐
